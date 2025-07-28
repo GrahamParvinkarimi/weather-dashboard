@@ -21,6 +21,9 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+            implementation(libs.koin.android)
+            implementation(libs.koin.androidx.compose)
+            // implementation(libs.mpandroidchart) // Chart library removed for initial build
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -31,6 +34,7 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+            implementation(libs.koin.core)
             implementation(projects.shared)
         }
         commonTest.dependencies {

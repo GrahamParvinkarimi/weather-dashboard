@@ -11,6 +11,11 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
+        
+        // Initialize shared SDK if not already initialized
+        if (org.koin.core.context.GlobalContext.getOrNull() == null) {
+            SharedSDK.initialize()
+        }
 
         setContent {
             App()
