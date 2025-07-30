@@ -31,7 +31,7 @@ Create a lean, single-screen weather application using Kotlin Multiplatform with
 - **Responsive Design**: Ensure proper layout for different screen sizes and orientations on both platforms
 - **Loading States**: Implement platform-appropriate loading indicators
 - **Error Handling**: Display user-friendly error messages using platform-specific UI patterns
-- **Design Systems**: Material 3 for Android, iOS native design patterns for SwiftUI
+- **Design Systems**: Material 3 for Android, latest iOS native design patterns for SwiftUI
 
 ## Project Structure
 ```

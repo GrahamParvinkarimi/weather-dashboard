@@ -1,0 +1,41 @@
+package com.gp.weather_dashboard.data.network
+
+import com.gp.weather_dashboard.data.models.ForecastResponse
+import com.gp.weather_dashboard.data.models.WeatherResponse
+import io.ktor.client.*
+import io.ktor.client.call.*
+import io.ktor.client.plugins.contentnegotiation.*
+import io.ktor.client.plugins.logging.*
+import io.ktor.client.request.*
+import io.ktor.http.*
+import io.ktor.serialization.kotlinx.json.*
+import kotlinx.serialization.json.Json
+
+class WeatherApi(private val httpClient: HttpClient) {
+    
+    companion object {
+        private const val BASE_URL = "https://api.openweathermap.org/data/2.5"
+        private const val API_KEY = "51d6b7558285aefc6d509827acb45b22" // Replace with actual API key
+    }
+
+    suspend fun getCurrentWeather(latitude: Double, longitude: Double): WeatherResponse {
+        return httpClient.get("$BASE_URL/weather") {
+            parameter("lat", latitude)
+            parameter("lon", longitude)
+            parameter("appid", API_KEY)
+            parameter("units", "metric") // We'll convert to Fahrenheit in the mapper
+        }.body()
+    }
+
+    suspend fun getHourlyForecast(latitude: Double, longitude: Double): ForecastResponse {
+        return httpClient.get("$BASE_URL/forecast") {
+            parameter("lat", latitude)
+            parameter("lon", longitude)
+            parameter("appid", API_KEY)
+            parameter("units", "metric")
+            parameter("cnt", 8) // 8 forecasts for next 24 hours (3-hour intervals)
+        }.body()
+    }
+}
+
+expect fun createHttpClient(): HttpClient
