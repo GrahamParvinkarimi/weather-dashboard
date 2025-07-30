@@ -1,6 +1,7 @@
 package com.gp.weather_dashboard.data.model
 
 import kotlinx.serialization.Serializable
+import kotlinx.datetime.Clock
 
 @Serializable
 data class WeatherData(
@@ -23,7 +24,7 @@ data class CurrentWeather(
     val weatherCondition: WeatherCondition,
     val sunrise: Long,
     val sunset: Long,
-    val timestamp: Long = System.currentTimeMillis()
+    val timestamp: Long = Clock.System.now().toEpochMilliseconds()
 )
 
 @Serializable

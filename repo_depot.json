@@ -1,0 +1,18 @@
+{
+  "allowsChildren": true,
+  "userObject": {
+    "label": "Your Organization",
+    "url": "",
+    "isDivider": false
+  },
+  "children": [
+    {
+      "allowsChildren": true,
+      "userObject": {
+        "label": "Sample Bookmark",
+        "url": "https://google.com",
+        "isDivider": false
+      }
+    }
+  ]
+}

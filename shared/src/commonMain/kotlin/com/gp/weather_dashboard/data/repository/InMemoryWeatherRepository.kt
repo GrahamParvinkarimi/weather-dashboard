@@ -12,6 +12,7 @@ import com.gp.weather_dashboard.domain.repository.WeatherRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.datetime.Clock
 
 class InMemoryWeatherRepository(
     private val apiClient: WeatherApiClient
@@ -28,7 +29,7 @@ class InMemoryWeatherRepository(
         return try {
             // Check cache first
             val cached = weatherCache[location.id]
-            if (cached != null && System.currentTimeMillis() - cached.second < CACHE_DURATION_MS) {
+            if (cached != null && Clock.System.now().toEpochMilliseconds() - cached.second < CACHE_DURATION_MS) {
                 return Result.success(cached.first)
             }
             
@@ -37,7 +38,7 @@ class InMemoryWeatherRepository(
             val weatherData = response.toWeatherData(location)
             
             // Cache the result
-            weatherCache[location.id] = weatherData to System.currentTimeMillis()
+            weatherCache[location.id] = weatherData to Clock.System.now().toEpochMilliseconds()
             
             Result.success(weatherData)
         } catch (e: Exception) {
@@ -50,7 +51,7 @@ class InMemoryWeatherRepository(
             // Check cache first
             val cacheKey = "${location.id}_forecast"
             val cached = weatherCache[cacheKey]
-            if (cached != null && System.currentTimeMillis() - cached.second < CACHE_DURATION_MS) {
+            if (cached != null && Clock.System.now().toEpochMilliseconds() - cached.second < CACHE_DURATION_MS) {
                 return Result.success(cached.first)
             }
             
@@ -66,7 +67,7 @@ class InMemoryWeatherRepository(
             )
             
             // Cache the result
-            weatherCache[cacheKey] = weatherData to System.currentTimeMillis()
+            weatherCache[cacheKey] = weatherData to Clock.System.now().toEpochMilliseconds()
             
             Result.success(weatherData)
         } catch (e: Exception) {

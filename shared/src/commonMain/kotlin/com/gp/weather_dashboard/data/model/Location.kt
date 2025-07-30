@@ -1,6 +1,7 @@
 package com.gp.weather_dashboard.data.model
 
 import kotlinx.serialization.Serializable
+import kotlinx.datetime.Clock
 
 @Serializable
 data class Location(
@@ -15,5 +16,5 @@ data class Location(
 @Serializable
 data class FavoriteLocation(
     val locationId: String,
-    val addedAt: Long = System.currentTimeMillis()
+    val addedAt: Long = Clock.System.now().toEpochMilliseconds()
 )
