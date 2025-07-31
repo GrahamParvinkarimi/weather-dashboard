@@ -4,7 +4,8 @@ import com.gp.weather_dashboard.data.models.Location
 import com.gp.weather_dashboard.data.models.LocationResult
 import kotlinx.cinterop.*
 import platform.CoreLocation.*
-import platform.Foundation.*
+import platform.Foundation.NSError
+import platform.darwin.NSObject
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
@@ -19,13 +20,14 @@ class IosLocationService : LocationService {
 
         return suspendCoroutine { continuation ->
             val delegate = object : NSObject(), CLLocationManagerDelegateProtocol {
+                @OptIn(ExperimentalForeignApi::class)
                 override fun locationManager(manager: CLLocationManager, didUpdateLocations: List<*>) {
                     val location = didUpdateLocations.firstOrNull() as? CLLocation
                     if (location != null) {
                         val result = LocationResult.Success(
                             Location(
-                                latitude = location.coordinate.latitude,
-                                longitude = location.coordinate.longitude
+                                latitude = location.coordinate.useContents { latitude },
+                                longitude = location.coordinate.useContents { longitude }
                             )
                         )
                         continuation.resume(result)

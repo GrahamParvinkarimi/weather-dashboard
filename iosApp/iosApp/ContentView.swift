@@ -2,7 +2,7 @@ import SwiftUI
 import Shared
 
 struct ContentView: View {
-    @StateObject private var viewModel = WeatherViewModelBridge()
+    @StateObject private var viewModel = ObservableWeatherViewModel()
     
     var body: some View {
         WeatherView(viewModel: viewModel)

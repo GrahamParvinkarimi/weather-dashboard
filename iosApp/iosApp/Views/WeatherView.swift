@@ -2,7 +2,7 @@ import SwiftUI
 import Shared
 
 struct WeatherView: View {
-    @ObservedObject var viewModel: WeatherViewModelBridge
+    @ObservedObject var viewModel: ObservableWeatherViewModel
     
     var body: some View {
         ZStack {
@@ -319,6 +319,6 @@ struct ErrorView: View {
 
 struct WeatherView_Previews: PreviewProvider {
     static var previews: some View {
-        WeatherView(viewModel: WeatherViewModelBridge())
+        WeatherView(viewModel: ObservableWeatherViewModel())
     }
 }

@@ -7,5 +7,5 @@ import org.koin.dsl.module
 
 actual val platformModule = module {
     single<LocationService> { IosLocationService() }
-    single { WeatherViewModel(get(), get(), get()) }
+    single { WeatherViewModel(get(), get()) }
 }

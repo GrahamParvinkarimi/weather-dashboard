@@ -1,11 +1,11 @@
 package com.gp.weather_dashboard.presentation
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.gp.weather_dashboard.data.location.LocationService
 import com.gp.weather_dashboard.data.mappers.celsiusToFahrenheit
 import com.gp.weather_dashboard.data.mappers.toCityAbbreviation
-import com.gp.weather_dashboard.data.models.*
+import com.gp.weather_dashboard.data.models.ForecastResult
+import com.gp.weather_dashboard.data.models.LocationResult
+import com.gp.weather_dashboard.data.models.WeatherResult
 import com.gp.weather_dashboard.data.repository.WeatherRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
