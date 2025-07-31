@@ -15,7 +15,7 @@ class WeatherApi(private val httpClient: HttpClient) {
     
     companion object {
         private const val BASE_URL = "https://api.openweathermap.org/data/2.5"
-        private const val API_KEY = "51d6b7558285aefc6d509827acb45b22" // Replace with actual API key
+        private const val API_KEY = "" // Replace with actual API key
     }
 
     suspend fun getCurrentWeather(latitude: Double, longitude: Double): WeatherResponse {
