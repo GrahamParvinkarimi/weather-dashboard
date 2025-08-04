@@ -1,6 +1,5 @@
 # Weather App Implementation Prompt for Claude Code
 
-```
 Create a lean, single-screen weather application using Kotlin Multiplatform with the following specifications:
 
 ## Core Requirements
@@ -96,4 +95,3 @@ iosApp/
 - **iOS Integration**: Create Swift wrappers/bridges for shared Kotlin ViewModels to work with SwiftUI ObservableObject pattern
 
 Please implement this weather application step by step, ensuring each component is properly tested and integrated before moving to the next. Start with the project setup and basic architecture, then implement the shared data layer, followed by the shared presentation logic (ViewModels), and finally the platform-specific UI implementations (Jetpack Compose for Android, SwiftUI for iOS). Ensure proper integration between the shared Kotlin ViewModels and SwiftUI through appropriate bridging mechanisms.
-```
