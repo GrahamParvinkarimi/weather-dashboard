@@ -1,6 +1,6 @@
 # Weather Dashboard
 
-A lean, single-screen weather application built with Kotlin Multiplatform targeting Android and iOS platforms.
+Built as a prototype for demonstrating the use of Claude Code and Figma MCP for Kotlin Multiplatform. A lean, single-screen weather application built with Kotlin Multiplatform targeting Android and iOS platforms.
 
 ## Features
 
