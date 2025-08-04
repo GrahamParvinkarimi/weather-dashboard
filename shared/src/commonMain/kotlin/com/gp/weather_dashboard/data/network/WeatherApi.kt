@@ -2,20 +2,16 @@ package com.gp.weather_dashboard.data.network
 
 import com.gp.weather_dashboard.data.models.ForecastResponse
 import com.gp.weather_dashboard.data.models.WeatherResponse
-import io.ktor.client.*
-import io.ktor.client.call.*
-import io.ktor.client.plugins.contentnegotiation.*
-import io.ktor.client.plugins.logging.*
-import io.ktor.client.request.*
-import io.ktor.http.*
-import io.ktor.serialization.kotlinx.json.*
-import kotlinx.serialization.json.Json
+import io.ktor.client.HttpClient
+import io.ktor.client.call.body
+import io.ktor.client.request.get
+import io.ktor.client.request.parameter
 
 class WeatherApi(private val httpClient: HttpClient) {
     
     companion object {
         private const val BASE_URL = "https://api.openweathermap.org/data/2.5"
-        private const val API_KEY = "" // Replace with actual API key
+        private const val API_KEY = "" // Replace with your actual API key
     }
 
     suspend fun getCurrentWeather(latitude: Double, longitude: Double): WeatherResponse {
